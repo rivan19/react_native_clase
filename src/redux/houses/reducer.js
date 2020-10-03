@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action = {}) => {
-    switch(action.types) {
+    switch( action.type) {
         case types.UPDATE_LIST:
             return {...state, list: action.payload.list};
         case types.SET_LOADING:

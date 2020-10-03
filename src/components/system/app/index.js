@@ -3,6 +3,8 @@ import {StatusBar} from 'react-native'
 import {Actions, Router, Scene, Stack} from 'react-native-router-flux'
 import {Splash, Home, Characters} from '../../pages' 
 import colors from '../../../assets/colors'
+import {Provider} from 'react-redux'
+import store from '../../../config/redux'
 
 
 class App extends Component {
@@ -17,20 +19,22 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Stack key="root">
-                    <Scene key={"Splash"} component={Splash} hideNavBar/>
-                    <Scene key={"Home"} component={Home} hideNavBar />
-                    <Scene key={"Characters"} 
-                    component={Characters} 
-                    navigationBarStyle={{backgroundColor: colors.navBar}} 
-                    titleStyle={{color: colors.white}}
-                    backButtonTextStyle={{color: colors.white}}
-                    backButtonTintColor={colors.white}
-                    backTitleEnabled={true}
-                    />
-                </Stack>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <Stack key="root">
+                        <Scene key={"Splash"} component={Splash} hideNavBar/>
+                        <Scene key={"Home"} component={Home} hideNavBar />
+                        <Scene key={"Characters"} 
+                        component={Characters} 
+                        navigationBarStyle={{backgroundColor: colors.navBar}} 
+                        titleStyle={{color: colors.white}}
+                        backButtonTextStyle={{color: colors.white}}
+                        backButtonTintColor={colors.white}
+                        backTitleEnabled={true}
+                        />
+                    </Stack>
+                </Router>
+            </Provider>
         )
     }
 }
